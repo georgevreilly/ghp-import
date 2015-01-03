@@ -8,11 +8,6 @@ except ImportError:
 
 LONG_DESC = open(os.path.join(os.path.dirname(__file__), "README.md")).read()
 
-entry_points = {
-    'console_scripts': [
-        'ghp-import = ghp_import:main',
-    ]
-}
 
 setup(
     name = "ghp-import",
@@ -35,5 +30,10 @@ setup(
         "Programming Language :: Python :: 3",
     ],
 
-    entry_points=entry_points,
+    packages = ['ghp_import'],
+    entry_points = {
+        'console_scripts': [
+            'ghp-import = ghp_import:main',
+        ]
+    }
 )
