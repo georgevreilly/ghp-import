@@ -44,13 +44,17 @@ Usage
 
     Usage: ghp-import [OPTIONS] DIRECTORY
 
-    Options:
-      -n          Include a .nojekyll file in the branch.
-      -m MESG     The commit message to use on the target branch.
-      -p          Push the branch to origin/{branch} after committing.
-      -r REMOTE   The name of the remote to push to. [origin]
-      -b BRANCH   Name of the branch to write to. [gh-pages]
-      -h, --help  show this help message and exit
+	Options:
+	  -n          Include a .nojekyll file in the branch.
+	  -c CNAME    Write a CNAME file with the given CNAME.
+	  -m MESG     The commit message to use on the target branch.
+	  -p          Push the branch to origin/{branch} after committing.
+	  -f          Force the push to the repository
+	  -r REMOTE   The name of the remote to push to. [origin]
+	  -b BRANCH   Name of the branch to write to. [gh-pages]
+	  -s          Use the shell when invoking Git. [False]
+	  -l          Follow symlinks when adding files. [False]
+	  -h, --help  show this help message and exit
 
 Its pretty simple. Inside your repository just run `ghp-import $DOCS_DIR`
 where `$DOCS_DIR` is the path to the **built** documentation. This will write a
@@ -63,8 +67,9 @@ a different remote using the `-r` flag.
 You can specify a different branch with `-b`. This is useful for user and
 organization page, which are served from the `master` branch.
 
-`ghp-import` also recognizes the `GIT_DIR` environment variable which can be
-useful for Git hooks.
+Some Windows users report needing to pass Git commands through the shell which can be accomplished by passing `-s`.
+
+The `-l` option will cause the import to follow symlinks for users that have odd configurations that include symlinking outside of their documentation directory.
 
 License
 -------
